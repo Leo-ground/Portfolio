@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Custom properties</title>
+    <!-- https://developer.mozilla.org/en-US/docs/Web/CSS/--*-->
+    <!-- Custom properties는 선언한 HTML의 본인,자식 노드에만 적용이 가능함-->
+    <!-- 따라서 .first-list에서 선언하면 하위요소인 li는 가능하지만, 형제요소인 .second-list는 안됨-->
+    <!-- 이러한 이유로 글로벌 변수에서 선언한다-->
+    <style>
+        
+        :root {
+            --font-size: 32px;
+            --background-color: thistle;
+            --base-space: 8px;
+            --text-color: whitesmoke;
+        }
+
+        .first-list {
+            /*background-color: thistle;*/
+            background-color: var(background-color);
+            /*color: whitesmoke;*/
+            color: var(--text-color);
+            /*margin-left: 8px;*/
+            margin-left: var(--base-space);
+            /*--font-size: 32px;   선언: --변수명 형식으로 작성하며 camel기법대신 -를 사용함*/
+            /*var(--font-size);   호출: CSS에서 제공하는 함수인 var()안에 선언변수명을 넣어 사용한다*/
+        }
+
+        .first-list li {
+            font-size: var(--font-size);
+        }
+
+        .second-list{
+            /*background-color: thistle;*/
+            background-color: var(background-color);
+            /*color: whitesmoke;*/
+            color: var(--text-color);
+            /*margin-left: 16px;*/
+            /* calc();라는 함수 사용: 산수가능*/
+            margin-left: cal(cvar(--base-space)*2);
+
+        }
+
+        /*특히 미디어 쿼리를 이용할때 굉장히 유용함*/
+        @media screen and (max-width: 768px){
+            :root {
+            --font-size: 32px;
+            --background-color: thistle;
+            --base-space: 8px;
+            --text-color: whitesmoke;
+        }
+        }
+    </style>
+</head>
+<body>
+    <ul class="first-list">
+        <li>Orange</li>
+        <li>Apple</li>
+    </ul>
+    <ul class="second-list">
+        <li>Korea</li>
+        <li>Japan</li>
+        <li>China</li>
+    </ul>
+</body>
+</html>

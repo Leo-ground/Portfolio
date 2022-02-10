@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        div {
+            width: 200px;
+            height: 200px;
+            background-color: tomato;
+            margin-bottom: 50px;
+        }
+
+        /* HTML에서 data-를 이용해 속성을 만들었던겄처럼 CSS에서도 적용가능*/
+        /* 태그를 명시해 세부적으로 선택가능 (span과 비교)*/
+        div[data-display-name='dream']{
+            background-color: beige;
+        }
+    </style>
+</head>
+<body>
+        <!-- tag안에 display-name같이 data-type을 추가하는 방법-->
+        <!-- data-다음에 원하는 이름을 명시-->
+    <div data-index="1" data-display-name="dream"></div>
+    <div data-index="2" data-display-name="coding"></div>
+    <span data-index="1" data-display-name="dream">asdad</span>
+    <textarea name="" id="" cols="30" rows="10"></textarea>
+    <!-- javaScript에서도 선택가능-->
+    <script>
+        const dream = document.querySelector('div')
+        //따옴표만 수정하면 CSS의 선택자 사용가능
+        const dream = document.querySelector('div[data-display-name="dream"]')
+        console.log(dream.dataset);
+        //data- 다음 단어들이  DOMStringMap이름으로 정의됨, data- 다음의 -는 Camel case로되어 나옴
+        console.log(dream.dataset.displyName);
+        console.log(dream.dataset.index);
+    </script>
+</body>
+</html>
