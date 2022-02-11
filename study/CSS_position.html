@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .outer {
+            width: 200px;
+            height: 200px;
+            margin-bottom: 20px;
+            background-color: green;
+        }
+        .box {
+            width: 100px;
+            height: 100px;
+            background-color: red;
+            /* position: relative; 이런경우 하기 absolute설정시 box안을 기준으로 한다 */
+        }
+        .inner {
+            width: 100%;
+            height: 50%;
+        }
+        .inner1 {
+            background-color: blue;
+        }
+        .inner2 {
+            background-color: yellow;
+        }
+
+        .box1 .inner1{
+            position: relative; /*default값 : static*/
+            top: 30px;  /*relative인 경우: 위 30, 왼쪽 100px 여백을 갖게됨 */
+            left: 100px; /*이때 본래의 위치기준으로 유지된 상태이기때문에 주변 아이템 위치 변화 없음*/
+        }
+
+        .box2 .inner1{
+            position: absolute; /*원래의 위치에서 빠져나와 주변의 아이템들의 재배치가 이루어짐 */
+            top: 30px;          /*absolute: 근접한 부모중에 기본값인 스테틱 아닌 부모의 기준에서 움직임 */
+            left: 100px;        /*따라서 box -> outer 를 거쳐 body까지 가게됨 */
+        }
+    </style>
+</head>
+<body>
+    <div class="outer">
+        <div class="box box1">
+            <div class="inner inner1">inner1</div>
+            <div class="inner inner2">inner2</div>
+        </div>
+    </div>
+    <div class="outer">
+        <div class="box box2">
+            <div class="inner inner1">inner1</div>
+            <div class="inner inner2">inner2</div>
+        </div>
+    </div>
+</body>
+</html>

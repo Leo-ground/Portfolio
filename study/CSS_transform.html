@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <!-- CSS로 동적인 요소 주기 -->
+    <!-- 무언가를 움직이고 원래있던 모양을 변화 시킬때 transform을 사용 -->
+    <style>
+        .box {
+            width: 100px;
+            height: 120px;
+            background-color: brown;
+            margin-bottom: 20px;
+        }
+        /* x축은 오른쪽 + ,y축은 아래쪽 + */
+        /* translate은 위치 이동을 시킴 */
+        .box1 {
+            /* x축으로 100px 이동 */
+            transform: translateX(100px); 
+        }
+
+        .box2 {
+            /* x축으로 50px, y축으로 -20px(위) 이동 */
+            transform: translateX(50px, -20px); 
+        }
+
+        /* scale을 사용하면 크기를 조절함 */
+        .box3 {
+            transform: scale(1.2)
+        }
+
+        .box4 {
+            transform: rotate(45deg);
+        }
+
+        .box5 {
+            transform: translate(100px, 100px) scale(2) rotate(45deg);
+        }
+    </style>
+</head>
+<body>
+    <div class="box box1"></div>
+    <div class="box box2"></div>
+    <div class="box box3"></div>
+    <div class="box box4"></div>
+    <div class="box box5"></div>
+</body>
+</html>

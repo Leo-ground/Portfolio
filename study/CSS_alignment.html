@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .box{
+            width: 200px;
+            height: 100px;
+            background-color: beige;
+        }
+
+        .inner {
+            width: 50%;
+            height: 50%;
+            background-color: blue;
+        }
+
+        .inner1 { /*margin설정이 없으면 block은 한라인을 다쓰기 때문에 기본적으로 오른쪽에 남은부분을 margin으로 잡는다 */
+            margin: auto; /*수평적으로만 적용되며, 수직은 적용이되지 않는다 */
+        }
+
+        .box2 {
+            text-align: center; /*text이외의 요소도 정렬가능하지만, div의 경우 마진이 들어있어서 변화 없음 */
+            /* 따라서 inner2를 margin: auto를 주면 적용가능해짐 */
+            /* 블럭이외의 아이템들은 바로 설정가능 */
+            /* 수평적용은 가능하지만 수직적용은 안됨 */
+        }
+
+        .inner3 {
+            transform: translate(50%, 50%); /* x축 50%, y축 50% */
+        }
+
+        .box4 h1 {
+            text-align: center;
+            line-height: 100px;
+            /* hacky한 방법으로 line-height을 부모상자만큼 주면 수직으로 중간으로 맞춰짐 */
+            /* 텍스트에는 top과 bottom이라는 font 매트릭스가 있는데 */
+            /* line-height의 제한을 주면 중간으로 알아서 정리가 된다 */
+            /* 하지만 br을 사용해 두줄로 사용할때는 자간간격이 넓어지게되는 문제점이 있다 */
+        }
+    </style>
+</head>
+<body>
+    <h3>margin: auto</h3>
+    <div class="box box1">
+        <div class="inner inner1"></div>
+    </div>
+    <h3>text-align: center</h3>
+    <div class="box box2">
+        <button>Text</button>
+        <div class="inner inner2"></div>
+    </div>
+    <h3>translate(50%, 50%)</h3>
+    <div class="box box3">
+        <div class="inner inner3"></div>
+    </div>
+    <h3>Text centering</h3>
+    <div class="box box4">
+        <h1>Text</h1>
+    </div>
+</body>
+</html>
