@@ -27,10 +27,27 @@
   --weight-regular: 400;
 
   /* Size */
+  --size-border-radius: 4px;
 }
 /* Universal tags (공통적용)*/
 * {
   box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: "Open Sans", sans-serif; /*font 설정 */
+  cursor: default; /* 글관련 태그 행오버시 마우스 포인터 모양 고정 */
+}
+
+a {
+  text-decoration: none; /* 밑줄제거 */
+  color: var(--color-white);
+}
+
+ul {
+  list-style: none; /*동그라미제거*/
+  padding-left: 0;
 }
 
 /* Typography (padding에 대한 Style) */
@@ -60,4 +77,38 @@ p {
   font-weight: var(--weight-regular);
   color: var(--color-black);
   margin: 4px 0;
+}
+
+/* Navbar */
+#navbar {
+  display: flex;
+  justify-content: space-between;
+  background-color: var(--color-pink);
+  align-items: center;
+  color: var(--color-white);
+  padding: 16px;
+}
+
+.navbar__menu {
+  display: flex;
+}
+
+.navbar__logo {
+  font-size: var(--font-medium);
+  font-weight: var(--weight-semi-bold);
+}
+
+.navbar__menu__item {
+  padding: 8px 12px;
+  margin: 0 4px;
+  cursor: pointer;
+  border-radius: var(--size-border-radius);
+}
+
+.navbar__menu__item.active {
+  border: 1px solid var(--color-white);
+}
+
+.navbar__menu__item:hover {
+  background-color: var(--color-dark-pink);
 }
