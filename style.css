@@ -487,6 +487,29 @@ p {
   transition: all var(--animation-duration) ease-in;
 }
 
+/* Scroll */
+.arrow-up {
+  position: fixed;
+  bottom: 50px;
+  right: 50px;
+  width: 70px;
+  height: 70px;
+  font-size: 50px;
+  color: var(--color-white);
+  background-color: var(--color-pink);
+  border-radius: 50%;
+  /* display: none;  display를 사용하면 완전히 없어졌다가 나타나므로*/
+  opacity: 0;
+  pointer-events: none;
+  transition: all 300ms ease-in;
+}
+
+.arrow-up.visible {
+  /* display: block; */
+  opacity: 1;
+  pointer-events: auto;
+}
+
 /* media 쿼리는 최소한의 차이점만 들어가야한다
 따라서 공통적인 부분은 밖에서 작성 */
 /* For below 768px screen width */
