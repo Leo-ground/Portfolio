@@ -361,6 +361,13 @@ p {
   display: flex;
   flex-wrap: wrap; /* 창 크기에 따라 다음줄로 내려감 */
   justify-content: center;
+  opacity: 1;
+  transition: all var(--animation-duration) ease-out;
+}
+
+.work__projects.anim-out {
+  opacity: 0;
+  transform: scale(0.96) translateY(40px);
 }
 
 .project {
@@ -373,6 +380,10 @@ p {
   height: 250px;
   margin: 2px;
   background-color: var(--color-light-white);
+}
+
+.project.invisible {
+  display: none;
 }
 
 /*project__img는 project에 담겨있고 project는 projects라는 flex박스에 아이템으로 담겨져

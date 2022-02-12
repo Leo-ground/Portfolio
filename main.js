@@ -48,17 +48,43 @@ document.addEventListener('scroll', () => {
     } else {
         arrowUp.classList.remove('visible');
     }
-})
+});
 
 // Handle click on the "arrow up" button
 arrowUp.addEventListener('click', () => {
     scrollIntoViews('#home');
-})
+});
+
+// Projects
+const workBtnContainer = document.querySelector('.work__categories');
+const projectContainer = document.querySelector('.work__projects');
+const projects = document.querySelectorAll('.project');
+workBtnContainer.addEventListener('click',(e) => {
+    const filter = e.target.dataset.filter || e.target.parentNode.dataset.filter;
+    // console.log(filter);
+    if(filter == null) {
+        return;
+    }
+    // 클릭하면 작아지면서 사라짐 -> 필터링 -> 필터링된게 나타남
+    projectContainer.classList.add('anim-out');
+    // add 와 remove anim-out, filter링의 타이밍차이를 위해 setTimeout안에 필터링을 작성
+    setTimeout(() => {
+        projects.forEach((project) => {
+            // console.log(project.dataset.type);
+            if(filter ==='*' || filter === project.dataset.type) {
+                project.classList.remove('invisible');
+            }else {
+                project.classList.add('invisible');
+            }
+        });
+        projectContainer.classList.remove('anim-out');
+    },300)
+});
 
 function scrollIntoViews(selector) {
     const scrollTo = document.querySelector(selector);
     scrollTo.scrollIntoView({behavior: "smooth"});
-}
+};
 
 
 
