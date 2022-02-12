@@ -65,6 +65,16 @@ workBtnContainer.addEventListener('click',(e) => {
     if(filter == null) {
         return;
     }
+
+    //Remove selection from the previous item and select the new one
+    const active = document.querySelector('.category__btn.selected');
+    // querySelector에서는 "." 클래스표시를 하지만 classList에서는 "." 표시 안함
+    active.classList.remove('selected');
+    const target = 
+        e.target.nodeName === 'BUTTON' ? e.target : e.target.parentNode
+    target.classList.add('selected');
+
+
     // 클릭하면 작아지면서 사라짐 -> 필터링 -> 필터링된게 나타남
     projectContainer.classList.add('anim-out');
     // add 와 remove anim-out, filter링의 타이밍차이를 위해 setTimeout안에 필터링을 작성
