@@ -91,7 +91,7 @@
 
             });
         };
-        const observer = new IntersectionObserver(callback);
+        const observer = new IntersectionObserver(callback,options);
 
         boxes.forEach(box => observer.observe(box)); //박스가 보일때마다 해당 함수가 실행
     </script>
