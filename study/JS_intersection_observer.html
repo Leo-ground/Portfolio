@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+
+        .box {
+            width: 300px;
+            height: 300px;
+            margin: 80px auto;
+            background-color: plum;
+            transition: 2000ms;
+        }
+
+        .box.active{
+            background-color: purple;
+        }
+    </style>
+</head>
+<body>
+    <div class="box">1</div>
+    <div class="box">2</div>
+    <div class="box">3</div>
+    <div class="box">4</div>
+    <div class="box">5</div>
+    <div class="box">6</div>
+    <div class="box">7</div>
+    <div class="box">8</div>
+    <div class="box">9</div>
+    <div class="box">10</div>
+    <div class="box">11</div>
+    <div class="box">12</div>
+    <div class="box">13</div>
+    <div class="box">14</div>
+    <div class="box">15</div>
+    <div class="box">16</div>
+    <div class="box">17</div>
+    <div class="box">18</div>
+    <div class="box">19</div>
+    <div class="box">20</div>
+
+    <script>
+        const boxes =  document.querySelectorAll('.box');
+        // console.log(boxes);
+
+        // callback 함수의 IntersectionObser entries 세부요소 읽고 보기
+        const options = {
+            root: null, //viewport : 브라우저크기
+            rootMargin: '0px', //설정한 크기만큼 브라우저보다 더 큰 범위가 잡힌다, 미리 준비할때 사용
+                               // rootMargin 사용예시: 사용자에게 현재 보여지지는 않지만 근접해있는 경우 내가 이미지를 먼저 로딩 해놓겠다
+                               //필요한 컨텐츠를 준비해 놓겠다 할 때 유용하게 사용됨
+            threshold: 1, //얼마만큼 보여져야 콜백 함수가 호출 될지를 결정하는 것 0~1 (100%)
+            // 요소가 들어올때 (intersection 일때)는 정해지 threshold가 적용되고
+            // 나갈때는 지정한 1-threshold 값이 만족되면 callback 호출
+        }
+
+
+        // 웹 API중 하나로 우리가 원하는 요소가 특정한 영역에 들어왔을 때 알려 주는 우리의 콜백함수를 호출하는 관찰자
+        // 이해하기 쉽게 아래 콜백함수를 밖으로 뺐음
+        // const observer = new IntersectionObserver((entries, observer) => {
+        //     console.log('observer!');
+        // });
+
+        const callback = (entries, observer) => {
+            // console.log(entries);
+            // console.log(observer);
+            // IntersectionObser entries 세부요소
+                //boundingClientRect 해당 target의 위치와 너비, 높이
+                //intersectionRatio 얼마만큼 들어와 있는지 전부 들어와있으면1, 반만들어오면(50%) 0.5
+                //intersectionRect 들어온 포지션과, 크기
+                //isIntersection 요소가 안으로 들어오는상태면 true, 윈도우에 있다가 나가는상태 false
+                //isVisible 윈도우상 보이는지 
+                //rootBounds 별도 옵션지정을 안하면 viewport(사용자가 보여지는 부분) 크기를 나타냄
+                //traget 현재 관찰하고 있는 요소 div.box
+
+            entries.forEach(entry => {
+                // console.log(entry.target);
+                if(entry.isIntersection) {
+                    // console.log(entry.target);
+                    entry.target.classList.add('active');
+                }else {
+                    // conseol.error(entry.target)
+                    entry.target.classList.remove('active');
+                }
+
+            });
+        };
+        const observer = new IntersectionObserver(callback);
+
+        boxes.forEach(box => observer.observe(box)); //박스가 보일때마다 해당 함수가 실행
+    </script>
+</body>
+</html>
